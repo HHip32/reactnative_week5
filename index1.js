@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { StyleSheet, Image, Text, View, TextInput, TouchableOpacity, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import index2 from './index2';
 
-export default function App() {
+export default function index1() {
+  const navigation = useNavigation();
+  const handleTranForm = () => {
+    navigation.navigate(index2)
+  }
   const [text, setText] = useState('Hãy chia sẻ những điều mà bạn thích về sản phẩm');
 
   const handleFocus = () => {
@@ -56,8 +62,11 @@ export default function App() {
           </Text>
         </TouchableOpacity>
       </View>
-      <Pressable style={{ width: 289, height: 41, backgroundColor:"#0D5DB6", borderWidth: 1, borderRadius: 5, borderBlockColor: '#1511EB', top: 190, justifyContent:'center'}}>
-        <Text style={{textAlign:'center', fontFamily:'Roboto', fontWeight: 700, fontSize:20, lineHeight: 23.44, color:'#FFFFFF'}}>Gửi</Text>
+      <Pressable
+        style={{ width: 289, height: 41, backgroundColor: "#0D5DB6", borderWidth: 1, borderRadius: 5, borderBlockColor: '#1511EB', top: 190, justifyContent: 'center' }}
+        onPress={handleTranForm}
+      >
+        <Text style={{ textAlign: 'center', fontFamily: 'Roboto', fontWeight: 700, fontSize: 20, lineHeight: 23.44, color: '#FFFFFF' }}>Gửi</Text>
       </Pressable>
     </View>
   );

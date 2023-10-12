@@ -1,7 +1,35 @@
-import React from 'react';
-import { StyleSheet, Image, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Image, Text, View, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import index1 from './index1';
 
-const index7 = () => {
+const index0 = () => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const navigation = useNavigation();
+    const validAccounts = [
+        { username: 'hiep', password: '123' },
+        { username: 'phan', password: '123' },
+        // Thêm các tài khoản khác nếu cần
+    ];
+    function checkLogin(username, password) {
+        // Kiểm tra xem thông tin đăng nhập có hợp lệ hay không
+        const isLoginSuccessful = validAccounts.some((account) => {
+            return account.username === username && account.password === password;
+        });
+        return isLoginSuccessful;
+    }
+    const handleLogin = () => {
+        const isLoginSuccessful = checkLogin(username, password);
+        if(isLoginSuccessful){
+            Alert.Alert('Đăng nhập thành công!')
+        }else{
+            Alert.Alert('Đăng nhập thất bại!')
+        }
+    }
+    const handleTranform = () => {
+        navigation.navigate(index1)
+    };
     return (
 
         <View style={styles.container}>
@@ -11,24 +39,27 @@ const index7 = () => {
                 <Image style={styles.imgUser} source={require('./assets/avatar_user.png')} />
                 <TextInput
                     style={styles.inputUser}
-                    defaultValue='Name'
+                    onChangeText={(text) => setUsername(text)}
                 />
             </View>
             <View style={styles.editPass}>
                 <Image style={styles.imgLockPass} source={require('./assets/lock1.png')} />
                 <TextInput
                     style={styles.inputPass}
-                    defaultValue='Password'
+                    secureTextEntry={true}
+                    onChangeText={(text) => setPassword(text)}
                 />
                 <Image style={styles.imgEyePass} source={require('./assets/eye.png')} />
             </View>
             <TouchableOpacity
                 style={styles.btnRegis}
+                onPress={handleLogin}
             >
                 <Text style={styles.textOfBtnRegis}>LOGIN</Text>
             </TouchableOpacity>
             <Text
                 style={styles.text2}
+                onPress={handleTranform}
             >CREATE ACCOUNT</Text>
 
         </View>
@@ -130,4 +161,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default index7;
+export default index0;

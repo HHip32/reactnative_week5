@@ -1,7 +1,12 @@
 import { StyleSheet, Image, Text, View, TouchableOpacity, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import index0 from './index0';
 
-export default function App() {
-
+export default function index3() {
+  const navigation = useNavigation();
+  const handleTranForm = () => {
+    navigation.navigate(index0)
+  }
   return (
     <View style={styles.container}>
       <View style={{ width: '100%', height: 320, alignItems: 'center', backgroundColor: '#FFFFFF' }}>
@@ -52,15 +57,18 @@ export default function App() {
         </Text>
         <Text style={{ width: 90, height: 25, fontFamily: 'Roboto', fontWeight: 700, fontSize: 18, lineHeight: 21.09, color: '#EE0D0D', textAlign: 'center' }}>141.800 đ</Text>
       </View>
-      <View style={{ width: '100%', height: 103, top: 140, backgroundColor: '#FFFFFF', alignItems:'center' }}>
+      <View style={{ width: '100%', height: 103, top: 140, backgroundColor: '#FFFFFF', alignItems: 'center' }}>
         <View style={{ width: '100%', marginTop: 10, justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center' }}>
           <Text style={{ width: 227, height: 25, marginLeft: 30, fontFamily: 'Roboto', fontWeight: 700, fontSize: 18, lineHeight: 21.09, color: '#011627' }}>
             Thành tiền
           </Text>
           <Text style={{ width: 90, height: 25, fontFamily: 'Roboto', fontWeight: 700, fontSize: 18, lineHeight: 21.09, color: '#EE0D0D' }}>141.800 đ</Text>
         </View>
-        <Pressable style={{width:331, height:45, marginTop: 10 ,borderRadius: 2, backgroundColor: '#E53935', justifyContent:'center', alignItems:'center'}}>
-          <Text style={{width:228, height:23, fontFamily:'Roboto', fontWeight:700, fontSize: 20, lineHeight: 23.44, textAlign:'center', color:'#FFFFFF'}}>
+        <Pressable
+          style={{ width: 331, height: 45, marginTop: 10, borderRadius: 2, backgroundColor: '#E53935', justifyContent: 'center', alignItems: 'center' }}
+          onPress={handleTranForm}
+        >
+          <Text style={{ width: 228, height: 23, fontFamily: 'Roboto', fontWeight: 700, fontSize: 20, lineHeight: 23.44, textAlign: 'center', color: '#FFFFFF' }}>
             TIẾN HÀNH ĐẶT HÀNG
           </Text>
         </Pressable>

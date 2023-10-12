@@ -2,10 +2,16 @@ import { LinearGradient } from 'expo-linear-gradient'
 
 import React, { useState } from 'react';
 import { CheckBox } from 'react-native-elements';
+import { useNavigation } from '@react-navigation/native';
 
 import { StyleSheet, Text, View, TextInput, Pressable } from 'react-native';
+import index3 from './index3';
 
-export default function App() {
+export default function index2() {
+  const navigation = useNavigation();
+  const handleTranForm = () => {
+    navigation.navigate(index3)
+  }
   const [lowerCaseChecked, setLowerCaseChecked] = useState(false);
   const [upperCaseChecked, setUpperCaseChecked] = useState(false);
   const [numberChecked, setNumberChecked] = useState(false);
@@ -43,7 +49,7 @@ export default function App() {
           </View>
           <View style={{ marginTop: 0, width: 297, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <Text style={{ width: 247, height: 27, fontFamily: 'Roboto', fontWeight: 700, fontSize: 20, lineHeight: 23.44, color: '#FFFFFF' }}>
-            Include upcase letters
+              Include upcase letters
             </Text>
             <CheckBox
               checked={upperCaseChecked}
@@ -54,7 +60,7 @@ export default function App() {
           </View>
           <View style={{ marginTop: 0, width: 297, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <Text style={{ width: 247, height: 27, fontFamily: 'Roboto', fontWeight: 700, fontSize: 20, lineHeight: 23.44, color: '#FFFFFF' }}>
-            Include number
+              Include number
             </Text>
             <CheckBox
               checked={numberChecked}
@@ -65,7 +71,7 @@ export default function App() {
           </View>
           <View style={{ marginTop: 0, width: 297, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <Text style={{ width: 247, height: 27, fontFamily: 'Roboto', fontWeight: 700, fontSize: 20, lineHeight: 23.44, color: '#FFFFFF' }}>
-            Include special symbol
+              Include special symbol
             </Text>
             <CheckBox
               checked={specialSymbolChecked}
@@ -74,8 +80,11 @@ export default function App() {
               onPress={() => setSpecialSymbolChecked(!specialSymbolChecked)}
             />
           </View>
-          <Pressable style={{width:269, height: 55, backgroundColor:'#3B3B98', marginTop: 20, justifyContent: 'center', alignItems: 'center'}}>
-            <Text style={{width:259, height:21, fontFamily: 'Roboto', fontWeight: 700, fontSize: 18, lineHeight: 21.09, color: '#FFFFFF', textAlign: 'center' }}>GENERATE PASSWORD </Text>
+          <Pressable
+            style={{ width: 269, height: 55, backgroundColor: '#3B3B98', marginTop: 20, justifyContent: 'center', alignItems: 'center' }}
+            onPress={handleTranForm}
+          >
+            <Text style={{ width: 259, height: 21, fontFamily: 'Roboto', fontWeight: 700, fontSize: 18, lineHeight: 21.09, color: '#FFFFFF', textAlign: 'center' }}>GENERATE PASSWORD </Text>
           </Pressable>
         </View>
       </LinearGradient>
